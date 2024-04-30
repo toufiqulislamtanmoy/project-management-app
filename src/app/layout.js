@@ -1,6 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import ReactQueryProvider from "@/utilitiis/providers/ReactQueryProvider";
+import MainLayout from "@/Layout/MainLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,7 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ReactQueryProvider>
+          <MainLayout>
+            <AntdRegistry>{children}</AntdRegistry>
+          </MainLayout>
+        </ReactQueryProvider>
+
+      </body>
     </html>
   );
 }
