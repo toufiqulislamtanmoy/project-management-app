@@ -24,5 +24,84 @@
       "email": "erfann@example.com",
       "password": "abc@123"
     }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Website Redesign",
+      "dueDate": "2024-05-15",
+      "description": "Redesign company website for better user experience.",
+      "team": ["John Doe", "Jane Smith", "Mike Johnson"]
+    },
+    {
+      "id": 2,
+      "title": "Mobile App Development",
+      "dueDate": "2024-06-30",
+      "description": "Build a native mobile app for iOS and Android platforms.",
+      "team": ["Alice Johnson", "Bob Williams", "Emma Brown"]
+    },
+    {
+      "id": 3,
+      "title": "Marketing Campaign Launch",
+      "dueDate": "2024-05-31",
+      "description": "Plan and execute a new marketing campaign for product launch.",
+      "team": ["Sarah Brown", "David Johnson", "Olivia Clark"]
+    }
+  ],
+  "tasks": [
+    {
+      "id": 101,
+      "projectId": 1,
+      "title": "Design Homepage",
+      "description": "Create mockups and wireframes for the new homepage.",
+      "status": "In Progress",
+      "assignedTo": "John Doe",
+      "dueDate": "2024-05-05"
+    },
+    {
+      "id": 102,
+      "projectId": 1,
+      "title": "Develop Contact Form",
+      "description": "Implement a contact form with backend integration.",
+      "status": "To Do",
+      "assignedTo": "Jane Smith",
+      "dueDate": "2024-05-10"
+    },
+    {
+      "id": 201,
+      "projectId": 2,
+      "title": "UI/UX Design",
+      "description": "Create high-fidelity designs for mobile screens.",
+      "status": "Done",
+      "assignedTo": "Alice Johnson",
+      "dueDate": "2024-05-20"
+    },
+    {
+      "id": 202,
+      "projectId": 2,
+      "title": "Implement User Authentication",
+      "description": "Integrate authentication using OAuth and social logins.",
+      "status": "In Progress",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-06-05"
+    },
+    {
+      "id": 301,
+      "projectId": 3,
+      "title": "Create Ad Copies",
+      "description": "Write compelling ad copies for online and offline channels.",
+      "status": "To Do",
+      "assignedTo": "Sarah Brown",
+      "dueDate": "2024-05-10"
+    },
+    {
+      "id": 302,
+      "projectId": 3,
+      "title": "Launch Email Campaign",
+      "description": "Send out targeted email campaigns to subscriber lists.",
+      "status": "In Progress",
+      "assignedTo": "David Johnson",
+      "dueDate": "2024-05-25"
+    }
   ]
 }

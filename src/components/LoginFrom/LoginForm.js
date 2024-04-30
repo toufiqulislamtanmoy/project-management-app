@@ -1,15 +1,21 @@
 "use client"
 import { useState } from 'react';
-import { Form, Input, Button, message, Flex } from 'antd';
+import { Form, Input, Button, message } from 'antd';
+
 import useGetUsers from '@/hooks/useGetUsers';
+import { Flex } from 'antd';
 import useAuthStore from '@/store/useAuthStore';
+import { useRouter } from 'next/navigation';
+
 
 
 const LoginForm = () => {
-    const { login } = useAuthStore();
+    const { login, user } = useAuthStore();
+
+    console.log(user)
     const [loading, setLoading] = useState(false);
     const [users, userApiLoading, error, refetch] = useGetUsers();
-
+    const router = useRouter();
 
 
     const onFinish = async (values) => {
@@ -21,8 +27,8 @@ const LoginForm = () => {
         if (matchedUser) {
             message.success('Login successful');
             login(matchedUser);
+            router.push('/');
             setLoading(false);
-
         } else {
             message.error('Invalid credentials. Please try again.');
             setLoading(false);
