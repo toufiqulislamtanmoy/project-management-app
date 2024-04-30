@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import ReactQueryProvider from "@/utilitiis/providers/ReactQueryProvider";
 import MainLayout from "@/Layout/MainLayout";
