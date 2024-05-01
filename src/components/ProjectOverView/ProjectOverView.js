@@ -1,8 +1,9 @@
 "use client"
 import useGetProject from "@/hooks/useGetProject";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
-import { Button, Flex, Form, Input, Modal, Row, message } from "antd";
+import { Button, DatePicker, Flex, Form, Input, Modal, Row, message } from "antd";
 import axios from "axios";
+import dayjs from "dayjs";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -11,8 +12,9 @@ const ProjectOverView = () => {
     console.log(projects)
     const [modal2Open, setModal2Open] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [projectDefaultValue, setProjectDefaultValue] = useState(null);
 
-
+    const defaultDate = dayjs("2024-05-31").toDate();
 
     const handleDeleteProject = async (projectId) => {
         try {
@@ -35,11 +37,41 @@ const ProjectOverView = () => {
         }
     };
 
+    const handleUpdate = (projectDetails) => {
+        setProjectDefaultValue(projectDetails)
+        console.log(projectDefaultValue)
+        setModal2Open(true)
+
+    }
+
 
     const onFinish = async (values) => {
         setLoading(true);
         console.log(values)
+        const { title, dueDate } = values;
+
+
+        try {
+
+            const response = await axios.patch(`http://localhost:3004/projects/${projectDefaultValue?.id}`, {
+                title: title ? title : projectDefaultValue?.title,
+                dueDate: dueDate ? dayjs(dueDate).format('YYYY-MM-DD') : projectDefaultValue?.dueDate
+            });
+
+            console.log('Update successful:', response.data);
+            message.success("Update Successful")
+            setLoading(false);
+            refetch();
+            setModal2Open(false);
+
+
+        } catch (error) {
+            console.error('Update failed:', error);
+            setLoading(false);
+
+        }
     };
+
     return (
         <>
 
@@ -64,7 +96,7 @@ const ProjectOverView = () => {
                                 <Button
                                     type="primary"
                                     icon={<EditOutlined />}
-                                    onClick={() => setModal2Open(true)}
+                                    onClick={() => handleUpdate(project)}
 
                                 />
                                 <Button
@@ -99,12 +131,23 @@ const ProjectOverView = () => {
                     style={{ width: 300 }}
                 >
 
+                    <Form.Item
+                        name="title"
+
+                    >
+                        <Input
+                            key={projectDefaultValue?.id}
+                            defaultValue={projectDefaultValue?.title} placeholder="Project Name" />
+                    </Form.Item>
 
                     <Form.Item
-                        name="project_name"
-                        rules={[{ required: true, message: 'Please enter your project name' }]}
+                        name="dueDate"
+
                     >
-                        <Input placeholder="Project Name" />
+                        <DatePicker
+                            key={projectDefaultValue?.id}
+                            defaultValue={dayjs(projectDefaultValue?.dueDate, 'YYYY-MM-DD')}
+                            placeholder="Due Date" style={{ width: '100%' }} />
                     </Form.Item>
 
                     <Form.Item>
