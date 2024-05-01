@@ -51,7 +51,7 @@ const ProjectDetails = ({ projectId }) => {
                 onCancel={() => setShowTaskForm(false)}
                 footer={null}
             >
-                <TaskForm projectId={project.id} onClose={() => setShowTaskForm(false)} />
+                <TaskForm projectId={project.id} team={project?.team} onClose={() => setShowTaskForm(false)} />
             </Modal>
         </div>
     );

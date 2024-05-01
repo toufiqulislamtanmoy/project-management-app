@@ -18,7 +18,7 @@ const useGetTaskList = (projectId) => {
     });
 
 
-    console.log(tasks)
+
     return [tasks, tasksApiLoading, error, refetch];
 };
 

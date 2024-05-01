@@ -30,7 +30,7 @@ const TaskItem = ({ task }) => {
 
     ]
     return (
-        <div className='bg-white rounded-md p-5'>
+        <div className='bg-white rounded-md p-5 mb-5'>
             {/* title */}
             <div className='flex items-center justify-between'>
                 {
