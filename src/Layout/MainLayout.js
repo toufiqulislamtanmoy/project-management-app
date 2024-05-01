@@ -1,7 +1,8 @@
 "use client"
-import { Layout, Menu, theme } from 'antd';
+import { Flex, Layout, Menu, theme } from 'antd';
 import { HomeOutlined, InboxOutlined, LogoutOutlined } from '@ant-design/icons';
-
+import { Typography } from 'antd';
+const { Title } = Typography;
 import useAuthStore from '@/store/useAuthStore';
 const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = ({ children }) => {
@@ -49,7 +50,12 @@ const MainLayout = ({ children }) => {
                             padding: 0,
                             background: colorBgContainer,
                         }}
-                    />
+                    >
+                        <Flex gap="middle" vertical align='center' justify='center'>
+
+                            <Title level={2}>h2. Ant Design</Title>
+                        </Flex>
+                    </Header>
                     <Content
                         style={{
                             margin: '24px 16px 0',

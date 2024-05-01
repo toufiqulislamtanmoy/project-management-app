@@ -31,33 +31,21 @@
       "title": "Website Redesign",
       "dueDate": "2024-05-15",
       "description": "Redesign company website for better user experience.",
-      "team": [
-        "John Doe",
-        "Jane Smith",
-        "Mike Johnson"
-      ]
+      "team": ["John Doe", "Jane Smith", "Mike Johnson"]
     },
     {
       "id": "2",
       "title": "Mobile App Development",
       "dueDate": "2024-06-24",
       "description": "Build a native mobile app for iOS and Android platforms.",
-      "team": [
-        "Alice Johnson",
-        "Bob Williams",
-        "Emma Brown"
-      ]
+      "team": ["Alice Johnson", "Bob Williams", "Emma Brown"]
     },
     {
       "id": "3",
       "title": "Marketing Campaign Launch",
       "dueDate": "2024-05-31",
       "description": "Plan and execute a new marketing campaign for product launch.",
-      "team": [
-        "Sarah Brown",
-        "David Johnson",
-        "Olivia Clark"
-      ]
+      "team": ["Sarah Brown", "David Johnson", "Olivia Clark"]
     }
   ],
   "tasks": [
