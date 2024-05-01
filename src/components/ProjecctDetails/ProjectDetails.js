@@ -1,6 +1,6 @@
 "use client"
-import { Row, Col, Card, Button, Modal } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Row, Col, Card, Button, Modal, Avatar, Tooltip } from 'antd';
+import { PlusOutlined, UserOutlined } from '@ant-design/icons';
 
 import { useState } from 'react';
 import useGetSingleProjectData from '@/hooks/useGetSingleProjectData';
@@ -25,6 +25,16 @@ const ProjectDetails = ({ projectId }) => {
                     <Col span={24}>
                         <p>{project?.description}</p>
                         <p>Due Date: {project?.dueDate}</p>
+                        <div className='my-3'>
+                            {
+                                project?.team?.map((member, index) =>
+                                    <Tooltip key={index} title={member}>
+                                        <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+                                    </Tooltip>
+
+                                )
+                            }
+                        </div>
                     </Col>
                 </Row>
                 <TaskList projectId={project.id} />

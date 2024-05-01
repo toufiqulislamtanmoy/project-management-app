@@ -13,7 +13,7 @@ const TaskList = ({ projectId }) => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
             <div className='bg-pink-300 p-5'>
-                <h2 className='text-center text-2xl'>TO DO</h2>
+                <h2 className='text-center text-2xl mb-5'>TO DO</h2>
                 <List
                     key={projectId}
                     dataSource={toDoTasks}
@@ -23,7 +23,7 @@ const TaskList = ({ projectId }) => {
                 />
             </div>
             <div className='bg-yellow-300 p-5'>
-                <h2 className='text-center text-2xl'>IN PROGRESS</h2>
+                <h2 className='text-center text-2xl mb-5'>IN PROGRESS</h2>
                 <List
                     key={projectId}
                     dataSource={inProgressTasks}
@@ -33,7 +33,7 @@ const TaskList = ({ projectId }) => {
                 />
             </div>
             <div className='bg-green-300 p-5'>
-                <h2 className='text-center text-2xl'>DONE</h2>
+                <h2 className='text-center text-2xl mb-5'>DONE</h2>
                 <List
                     key={projectId}
                     dataSource={doneTasks}
