@@ -4,7 +4,7 @@ import axios from 'axios';
 import dayjs from 'dayjs';
 import React from 'react';
 
-const UpdateTaskForm = ({ task }) => {
+const UpdateTaskForm = ({ task, refetch }) => {
     const [project] = useGetSingleProjectData(task?.projectId)
     const onFinish = async (values) => {
         console.log('Submitted:', values);
@@ -19,17 +19,11 @@ const UpdateTaskForm = ({ task }) => {
         };
         console.log(updatedTask)
         try {
-
-
-
-
             const response = await axios.patch(`http://localhost:3004/tasks/${task.id}`, updatedTask);
-
-
             console.log('Task updated successfully:', response.data);
             message.success('Task updated successfully:', response.data);
 
-
+            refetch();
         } catch (error) {
 
             console.error('Error updating task:', error.message);

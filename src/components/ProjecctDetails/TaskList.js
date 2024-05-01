@@ -12,6 +12,7 @@ const TaskList = ({ projectId }) => {
     useEffect(() => {
         if (!tasksApiLoading && !error) {
             setTasks(tasks);
+            console.log("task set successfully")
         } else if (error) {
             setError(error);
         }
@@ -23,33 +24,33 @@ const TaskList = ({ projectId }) => {
     const doneTasks = tasks.filter((task) => task.status === 'Done');
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
-            <div className='bg-pink-300 p-5'>
+            <div className='bg-pink-300 p-5 max-h-[45vh] overflow-y-automax-h-[45vh] overflow-y-auto'>
                 <h2 className='text-center text-2xl mb-5'>TO DO</h2>
                 {toDoTasks ?
                     <List
                         key={projectId}
                         dataSource={toDoTasks}
                         renderItem={(task) => (
-                            <TaskItem key={task.id} task={task} />
+                            <TaskItem key={task.id} task={task} refetch={refetch} />
                         )}
                     /> :
                     <p>Loading ....</p>
                 }
             </div>
-            <div className='bg-yellow-300 p-5'>
+            <div className='bg-yellow-300 p-5 max-h-[45vh] overflow-y-auto'>
                 <h2 className='text-center text-2xl mb-5'>IN PROGRESS</h2>
                 {inProgressTasks ?
                     <List
                         key={projectId}
                         dataSource={inProgressTasks}
                         renderItem={(task) => (
-                            <TaskItem key={task.id} task={task} />
+                            <TaskItem key={task.id} task={task} refetch={refetch} />
                         )}
                     /> : <p>Loading...</p>
 
                 }
             </div>
-            <div className='bg-green-300 p-5'>
+            <div className='bg-green-300 p-5 max-h-[45vh] overflow-y-auto'>
                 <h2 className='text-center text-2xl mb-5'>DONE</h2>
                 {
                     doneTasks ?
@@ -57,7 +58,7 @@ const TaskList = ({ projectId }) => {
                             key={projectId}
                             dataSource={doneTasks}
                             renderItem={(task) => (
-                                <TaskItem key={task.id} task={task} />
+                                <TaskItem key={task.id} task={task} refetch={refetch} />
                             )}
                         /> :
                         <p>Loading......</p>

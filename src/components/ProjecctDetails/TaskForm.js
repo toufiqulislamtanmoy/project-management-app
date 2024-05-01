@@ -3,7 +3,10 @@ import { Form, Input, Button, Select, DatePicker, message } from 'antd';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import dayjs from 'dayjs';
+import useTaskStore from '@/store/useTaskStore';
+import useGetTaskList from '@/hooks/useGetTaskList';
 const TaskForm = ({ projectId, onClose, team }) => {
+    const setTasks = useTaskStore((state) => state.setTasks);
 
     const onFinish = async (values) => {
         console.log('Submitted:', values);
@@ -24,10 +27,12 @@ const TaskForm = ({ projectId, onClose, team }) => {
 
             );
 
-            console.log('Update successful:', response.data);
-            message.success("Update Successful")
+            console.log('Added successful:', response.data);
+            message.success('Added successful');
+
+
         } catch (error) {
-            console.error('Update failed:', error);
+            console.error('Added failed:', error);
 
 
         }

@@ -4,6 +4,7 @@ import { HomeOutlined, InboxOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 const { Title } = Typography;
 import useAuthStore from '@/store/useAuthStore';
+import Link from 'next/link';
 const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = ({ children }) => {
     const {
@@ -28,10 +29,15 @@ const MainLayout = ({ children }) => {
                     <div className="demo-logo-vertical" />
                     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']} items={[
                         {
-                            key: '1',
+                            label: (
+                                <Link href="/">
+                                    Home
+                                </Link>
+                            ),
                             icon: <HomeOutlined />,
-                            label: 'Home',
+                            key: '1',
                         },
+
                         {
                             key: '2',
                             icon: <InboxOutlined />,

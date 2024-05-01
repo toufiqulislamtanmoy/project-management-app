@@ -5,7 +5,7 @@ import { useState } from 'react';
 import TaskDetails from './TaskDetails';
 import axios from 'axios';
 import UpdateTaskForm from './UpdateTaskForm';
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, refetch }) => {
     const [updateTaskModal, setUpdateTaskModal] = useState(false);
     const [showTaskDetails, setShowTaskDetails] = useState(false);
     console.log(task)
@@ -36,7 +36,7 @@ const TaskItem = ({ task }) => {
 
             console.log('Task updated successfully:', response.data);
             message.success('Task updated successfully:', response.data);
-
+            refetch();
 
         } catch (error) {
 
@@ -88,7 +88,7 @@ const TaskItem = ({ task }) => {
                 footer={null}
 
             >
-                <UpdateTaskForm task={task} />
+                <UpdateTaskForm task={task} refetch={refetch} />
             </Modal>
         </>
     );

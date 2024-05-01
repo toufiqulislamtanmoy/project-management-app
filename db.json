@@ -28,7 +28,7 @@
   "projects": [
     {
       "id": "1",
-      "title": "Website Redesign",
+      "title": "Website Redesignn",
       "dueDate": "2024-05-16",
       "description": "Redesign company website for better user experience.",
       "team": [
@@ -64,16 +64,16 @@
     {
       "id": "101",
       "projectId": 1,
-      "title": "Design Homepage",
+      "title": "Design",
       "description": "Create mockups and wireframes for the new homepage.",
-      "status": "In Progress",
+      "status": "Done",
       "assignedTo": "John Doe",
-      "dueDate": "2024-05-05"
+      "dueDate": "2024-05-21T18:00:00.000Z"
     },
     {
       "id": "102",
       "projectId": 1,
-      "title": "Develop Contact Form",
+      "title": "Develop",
       "description": "Implement a contact form with backend integration.",
       "status": "To Do",
       "assignedTo": "Jane Smith",
@@ -93,8 +93,8 @@
       "projectId": 2,
       "title": "User Authentication",
       "description": "Integrate authentication using OAuth and social logins.",
-      "status": "In Progress",
-      "assignedTo": "Bob Williams",
+      "status": "Done",
+      "assignedTo": "Alice Johnson",
       "dueDate": "2024-06-05"
     },
     {
@@ -123,6 +123,69 @@
       "status": "To Do",
       "assignedTo": "Olivia Clark",
       "dueDate": "2024-05-01"
+    },
+    {
+      "id": "17fcc356-39f1-4951-839c-fa5b3a56ad2c",
+      "projectId": "2",
+      "title": "Hi",
+      "description": "gdh",
+      "status": "To Do",
+      "assignedTo": "Emma Brown",
+      "dueDate": "2024-05-07"
+    },
+    {
+      "id": "89294567-c79c-463e-bd88-0997f5b6c5df",
+      "projectId": "2",
+      "title": "ihkjh",
+      "description": "gjhgjh",
+      "status": "Done",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-05-02"
+    },
+    {
+      "id": "c0263998-ef2b-4310-aaa8-e1d99559663b",
+      "projectId": "2",
+      "title": "User Authenticationnn",
+      "description": "iuhjbmnnbv",
+      "status": "Done",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-05-13"
+    },
+    {
+      "id": "0439281c-25c8-424d-92e1-c1c479b53566",
+      "projectId": "1",
+      "title": "User Authenticationnn",
+      "description": "dgfgdg",
+      "status": "To Do",
+      "assignedTo": "Mike Johnson",
+      "dueDate": "2024-05-22"
+    },
+    {
+      "id": "a36a2b99-17c2-4d2a-9ea1-b4f8ae31c0dc",
+      "projectId": "1",
+      "title": "Design Homepagee",
+      "description": "sffdfsd",
+      "status": "To Do",
+      "assignedTo": "Mike Johnson",
+      "dueDate": "2024-05-16"
+    },
+    {
+      "id": "ee343842-8391-475f-9158-8de6743fac5c",
+      "projectId": "1",
+      "title": "Hi",
+      "description": "fdfs",
+      "status": "To Do",
+      "assignedTo": "Jane Smith",
+      "dueDate": "2024-05-14"
+    },
+    {
+      "id": "7636b7b3-eab3-4f3a-974d-ad8a1df670cb",
+      "projectId": "1",
+      "title": "Design Homepagee",
+      "description": "fsfsdf",
+      "status": "To Do",
+      "assignedTo": "Mike Johnson",
+      "dueDate": "2024-05-21"
     }
   ]
 }

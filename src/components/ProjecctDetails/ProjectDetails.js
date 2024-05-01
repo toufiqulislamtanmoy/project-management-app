@@ -6,7 +6,7 @@ import { useState } from 'react';
 import useGetSingleProjectData from '@/hooks/useGetSingleProjectData';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
-
+import useTaskStore from '@/store/useTaskStore';
 
 const ProjectDetails = ({ projectId }) => {
 
