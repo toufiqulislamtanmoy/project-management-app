@@ -1,43 +1,48 @@
 "use client"
-import Image from 'next/image';
-import duser from "@/assets/duser.jpg"
-import { Avatar, Button, Dropdown, Modal, Space, Tooltip } from 'antd';
-import { CheckOutlined, RightOutlined, SmallDashOutlined, UserOutlined } from '@ant-design/icons';
-import Link from 'next/link';
+import { Avatar, Modal, Tooltip, message } from 'antd';
+import { CheckOutlined, EditOutlined, RightOutlined, UserOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import TaskDetails from './TaskDetails';
+import axios from 'axios';
+import UpdateTaskForm from './UpdateTaskForm';
 const TaskItem = ({ task }) => {
-    const [open, setOpen] = useState(false);
+    const [updateTaskModal, setUpdateTaskModal] = useState(false);
     const [showTaskDetails, setShowTaskDetails] = useState(false);
     console.log(task)
-    const handelEditTask = (id) => {
-        console.log(id)
+    const handelEditTask = (taskDetails) => {
+        console.log(taskDetails)
+        setUpdateTaskModal(true);
     }
-    const handelDeleteTask = (id) => {
-        console.log(id)
-    }
-    const items = [
 
-        {
-            label: (
-
-                <button className='' onClick={() => handelEditTask(task?.id)}>Edit</button>
-            ),
-            key: '1',
-        },
-        {
-            label: (
-
-                <button className='' onClick={() => handelDeleteTask(task?.id)}>Delete</button>
-            ),
-            key: '1',
-        },
-
-    ]
-
-    const handleAddTask = () => {
+    // task details modal state
+    const handleTaskDetails = () => {
         setShowTaskDetails(true);
     };
+
+    // Mark As Completed Task
+
+    const handleStatusUpdate = async (taskDetails) => {
+        try {
+
+
+            const updatedTask = {
+                ...taskDetails,
+                status: 'Done',
+            };
+
+
+            const response = await axios.patch(`http://localhost:3004/tasks/${taskDetails.id}`, updatedTask);
+
+
+            console.log('Task updated successfully:', response.data);
+            message.success('Task updated successfully:', response.data);
+
+
+        } catch (error) {
+
+            console.error('Error updating task:', error.message);
+        }
+    }
     return (
         <>
             <div className='bg-white rounded-md p-5 mb-5'>
@@ -45,28 +50,27 @@ const TaskItem = ({ task }) => {
                 <div className='flex items-center justify-between'>
                     {
                         task?.status !== "Done" &&
-                        <button className=''><CheckOutlined /></button>
+                        <Tooltip title="Mark As Complete">
+                            <button className='' onClick={() => handleStatusUpdate(task)}><CheckOutlined /></button>
+                        </Tooltip>
                     }
                     <h2>{task?.title}</h2>
                     <p>{task?.dueDate}</p>
-                    <Dropdown menu={{ items }}>
-
-                        <Space>
-                            <SmallDashOutlined />
-                        </Space>
-
-                    </Dropdown>
+                    <Tooltip title="Update Task">
+                        <button className='' onClick={() => handelEditTask(task)}><EditOutlined /></button>
+                    </Tooltip>
                     <div className='flex items-center justify-center gap-2'>
                         <Tooltip title={task?.assignedTo}>
                             <Avatar icon={<UserOutlined />} />
                         </Tooltip>
-                        <button onClick={handleAddTask}>
+                        <button onClick={handleTaskDetails}>
                             <RightOutlined />
                         </button>
                     </div>
                 </div>
 
             </div>
+            {/* task details modal */}
             <Modal
                 title="Task Details"
                 visible={showTaskDetails}
@@ -75,6 +79,16 @@ const TaskItem = ({ task }) => {
                 width="50vw"
             >
                 <TaskDetails task={task} />
+            </Modal>
+            {/* update task modal */}
+            <Modal
+                title="Update Task Details"
+                visible={updateTaskModal}
+                onCancel={() => setUpdateTaskModal(false)}
+                footer={null}
+
+            >
+                <UpdateTaskForm task={task} />
             </Modal>
         </>
     );

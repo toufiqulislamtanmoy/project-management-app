@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 const useGetTaskList = (projectId) => {
@@ -17,7 +18,11 @@ const useGetTaskList = (projectId) => {
         }
     });
 
-
+    useEffect(() => {
+        if (projectId) {
+            refetch();
+        }
+    }, [projectId, refetch]);
 
     return [tasks, tasksApiLoading, error, refetch];
 };

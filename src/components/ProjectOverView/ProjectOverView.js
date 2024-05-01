@@ -1,20 +1,31 @@
 "use client"
 import useGetProject from "@/hooks/useGetProject";
+import useProjectStore from "@/store/useProjectStore";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, DatePicker, Flex, Form, Input, Modal, Row, message } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProjectOverView = () => {
-    const [projects, refetch] = useGetProject();
+    const [projects, projectsApiLoading, error, refetch] = useGetProject();
     console.log(projects)
     const [modal2Open, setModal2Open] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [formLoading, setFormLoading] = useState(false);
     const [projectDefaultValue, setProjectDefaultValue] = useState(null);
 
-    const defaultDate = dayjs("2024-05-31").toDate();
+    const setProjects = useProjectStore((state) => state.setProjects);
+    const setError = useProjectStore((state) => state.setError);
+
+    useEffect(() => {
+        if (!projectsApiLoading && !error) {
+            setProjects(projects);
+        } else if (error) {
+            setError(error);
+        }
+    }, [projects, projectsApiLoading, error, setProjects, setError]);
+
 
     const handleDeleteProject = async (projectId) => {
         try {
@@ -46,7 +57,7 @@ const ProjectOverView = () => {
 
 
     const onFinish = async (values) => {
-        setLoading(true);
+        setFormLoading(true);
         console.log(values)
         const { title, dueDate } = values;
 
@@ -60,14 +71,14 @@ const ProjectOverView = () => {
 
             console.log('Update successful:', response.data);
             message.success("Update Successful")
-            setLoading(false);
+            setFormLoading(false);
             refetch();
             setModal2Open(false);
 
 
         } catch (error) {
             console.error('Update failed:', error);
-            setLoading(false);
+            setFormLoading(false);
 
         }
     };
@@ -151,7 +162,7 @@ const ProjectOverView = () => {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" loading={loading} block>
+                        <Button type="primary" htmlType="submit" loading={formLoading} block>
                             Update
                         </Button>
                     </Form.Item>

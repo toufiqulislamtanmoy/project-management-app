@@ -4,15 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import dayjs from 'dayjs';
 const TaskForm = ({ projectId, onClose, team }) => {
-    // {
-    //     "id": "102",
-    //     "projectId": 1,
-    //     "title": "Develop Contact Form",
-    //     "description": "Implement a contact form with backend integration.",
-    //     "status": "To Do",
-    //     "assignedTo": "Jane Smith",
-    //     "dueDate": "2024-05-10"
-    //   },
 
     const onFinish = async (values) => {
         console.log('Submitted:', values);
@@ -35,10 +26,6 @@ const TaskForm = ({ projectId, onClose, team }) => {
 
             console.log('Update successful:', response.data);
             message.success("Update Successful")
-
-
-
-
         } catch (error) {
             console.error('Update failed:', error);
 
