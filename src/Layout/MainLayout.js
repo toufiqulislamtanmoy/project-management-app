@@ -3,10 +3,11 @@ import { Flex, Layout, Menu, theme } from 'antd';
 import { HomeOutlined, InboxOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 const { Title } = Typography;
-import useAuthStore from '@/store/useAuthStore';
 import Link from 'next/link';
+import ProtectedRoute from '@/utilitiis/providers/ProtectedRoute';
 const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = ({ children }) => {
+
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
@@ -42,6 +43,7 @@ const MainLayout = ({ children }) => {
                             key: '2',
                             icon: <InboxOutlined />,
                             label: 'Inbox',
+
                         },
                         {
                             key: '3',
@@ -76,7 +78,9 @@ const MainLayout = ({ children }) => {
                             }}
 
                         >
-                            {children}
+                            <ProtectedRoute>
+                                {children}
+                            </ProtectedRoute>
                         </div>
                     </Content>
                     <Footer

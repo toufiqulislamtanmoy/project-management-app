@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ProjectOverView = () => {
+
     const [projects, projectsApiLoading, error, refetch] = useGetProject();
     console.log(projects)
     const [modal2Open, setModal2Open] = useState(false);
