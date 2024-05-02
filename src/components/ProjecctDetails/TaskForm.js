@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import useTaskStore from '@/store/useTaskStore';
 import useGetTaskList from '@/hooks/useGetTaskList';
 const TaskForm = ({ projectId, onClose, team }) => {
+
     const setTasks = useTaskStore((state) => state.setTasks);
 
     const onFinish = async (values) => {
@@ -29,6 +30,8 @@ const TaskForm = ({ projectId, onClose, team }) => {
 
             console.log('Added successful:', response.data);
             message.success('Added successful');
+            setTasks((prevTasks) => [...prevTasks, taskData]);
+            onClose();
 
 
         } catch (error) {

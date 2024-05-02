@@ -129,7 +129,7 @@
       "projectId": "2",
       "title": "Hi",
       "description": "gdh",
-      "status": "To Do",
+      "status": "Done",
       "assignedTo": "Emma Brown",
       "dueDate": "2024-05-07"
     },
@@ -186,6 +186,96 @@
       "status": "To Do",
       "assignedTo": "Mike Johnson",
       "dueDate": "2024-05-21"
+    },
+    {
+      "id": "828a1e82-87a6-40e6-adeb-04c3a2311120",
+      "projectId": "1",
+      "title": "User Authentication",
+      "description": "User",
+      "status": "Done",
+      "assignedTo": "Mike Johnson",
+      "dueDate": "2024-05-15"
+    },
+    {
+      "id": "67c3e0af-9f21-4ba5-a6a4-08f6931fa3f4",
+      "projectId": "1",
+      "title": "User Authenticationnn Bug",
+      "description": "iiyuy",
+      "status": "Done",
+      "assignedTo": "Mike Johnson",
+      "dueDate": "2024-05-10"
+    },
+    {
+      "id": "47746d98-39a2-426f-be59-7e5311016af6",
+      "projectId": "2",
+      "title": "User Authenticationnn",
+      "description": "fdsfad",
+      "status": "Done",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-05-13"
+    },
+    {
+      "id": "063ba37d-11d0-401f-aa87-0d172dad3dd5",
+      "projectId": "2",
+      "title": "User Authenticationnn Bug",
+      "description": "fdsfad",
+      "status": "Done",
+      "assignedTo": "Emma Brown",
+      "dueDate": "2024-05-13"
+    },
+    {
+      "id": "7a1ea471-9985-4809-bd7a-9793082f85fb",
+      "projectId": "2",
+      "title": "Custom Footer",
+      "description": "Custom Footer",
+      "status": "Done",
+      "assignedTo": "Alice Johnson",
+      "dueDate": "2024-05-14"
+    },
+    {
+      "id": "dce59188-ede2-4114-a408-003255a4300a",
+      "projectId": "2",
+      "title": "Custom Navbar",
+      "description": "Custom Navbar",
+      "status": "Done",
+      "assignedTo": "Emma Brown",
+      "dueDate": "2024-05-09"
+    },
+    {
+      "id": "ef3b18cc-c755-49f7-80a2-e99d24fc91e3",
+      "projectId": "2",
+      "title": "Custom Header",
+      "description": "Custom Header",
+      "status": "To Do",
+      "assignedTo": "Alice Johnson",
+      "dueDate": "2024-05-09"
+    },
+    {
+      "id": "2f0e4bf5-d9b4-48c6-9096-c7ce0e264dcf",
+      "projectId": "2",
+      "title": "Custom Header",
+      "description": "Custom Header",
+      "status": "To Do",
+      "assignedTo": "Alice Johnson",
+      "dueDate": "2024-05-09"
+    },
+    {
+      "id": "4a822f5f-f0f6-4a0b-8f1a-3953bbc4777c",
+      "projectId": "2",
+      "title": "Design",
+      "description": "sfsdfsd",
+      "status": "Done",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-05-06"
+    },
+    {
+      "id": "921aee17-ad98-4a48-825c-cee9fb36e31d",
+      "projectId": "2",
+      "title": "Design",
+      "description": "sfsdfsd",
+      "status": "Done",
+      "assignedTo": "Bob Williams",
+      "dueDate": "2024-05-06"
     }
   ]
 }

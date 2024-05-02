@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TaskDetails from './TaskDetails';
 import axios from 'axios';
 import UpdateTaskForm from './UpdateTaskForm';
+import { Draggable } from 'react-beautiful-dnd';
 const TaskItem = ({ task, refetch }) => {
     const [updateTaskModal, setUpdateTaskModal] = useState(false);
     const [showTaskDetails, setShowTaskDetails] = useState(false);
@@ -35,7 +36,7 @@ const TaskItem = ({ task, refetch }) => {
 
 
             console.log('Task updated successfully:', response.data);
-            message.success('Task updated successfully:', response.data);
+            message.success('Task updated successfully:');
             refetch();
 
         } catch (error) {
@@ -44,53 +45,45 @@ const TaskItem = ({ task, refetch }) => {
         }
     }
     return (
-        <>
-            <div className='bg-white rounded-md p-5 mb-5'>
-                {/* title */}
-                <div className='flex items-center justify-between'>
-                    {
-                        task?.status !== "Done" &&
-                        <Tooltip title="Mark As Complete">
-                            <button className='' onClick={() => handleStatusUpdate(task)}><CheckOutlined /></button>
+        <Draggable draggableId={task.id} index={0}>
+            {(provided) => (
+                <div
+                    className='bg-white rounded-md p-5 mb-5'
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                >
+                    {/* Task item content */}
+                    <div className='flex items-center justify-between'>
+                        {/* Mark as complete button */}
+                        {task?.status !== 'Done' && (
+                            <Tooltip title='Mark As Complete'>
+                                <button onClick={() => handleStatusUpdate(task)}>
+                                    <CheckOutlined />
+                                </button>
+                            </Tooltip>
+                        )}
+                        <h2>{task?.title}</h2>
+                        <p>{task?.dueDate}</p>
+                        {/* Update task button */}
+                        <Tooltip title='Update Task'>
+                            <button onClick={() => handelEditTask(task)}>
+                                <EditOutlined />
+                            </button>
                         </Tooltip>
-                    }
-                    <h2>{task?.title}</h2>
-                    <p>{task?.dueDate}</p>
-                    <Tooltip title="Update Task">
-                        <button className='' onClick={() => handelEditTask(task)}><EditOutlined /></button>
-                    </Tooltip>
-                    <div className='flex items-center justify-center gap-2'>
-                        <Tooltip title={task?.assignedTo}>
-                            <Avatar icon={<UserOutlined />} />
-                        </Tooltip>
-                        <button onClick={handleTaskDetails}>
-                            <RightOutlined />
-                        </button>
+                        {/* Assigned user avatar and details */}
+                        <div className='flex items-center justify-center gap-2'>
+                            <Tooltip title={task?.assignedTo}>
+                                <Avatar icon={<UserOutlined />} />
+                            </Tooltip>
+                            <button onClick={handleTaskDetails}>
+                                <RightOutlined />
+                            </button>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-            {/* task details modal */}
-            <Modal
-                title="Task Details"
-                visible={showTaskDetails}
-                onCancel={() => setShowTaskDetails(false)}
-                footer={null}
-                width="50vw"
-            >
-                <TaskDetails task={task} />
-            </Modal>
-            {/* update task modal */}
-            <Modal
-                title="Update Task Details"
-                visible={updateTaskModal}
-                onCancel={() => setUpdateTaskModal(false)}
-                footer={null}
-
-            >
-                <UpdateTaskForm task={task} refetch={refetch} />
-            </Modal>
-        </>
+            )}
+        </Draggable>
     );
 };
 

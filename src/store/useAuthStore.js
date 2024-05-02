@@ -1,9 +1,12 @@
 import { create } from "zustand";
 
 const useAuthStore = create((set) => {
+    let initialUser
 
-    const storedUser = localStorage.getItem("user");
-    const initialUser = storedUser ? JSON.parse(storedUser) : null;
+    if (typeof window !== 'undefined') {
+        const storedUser = localStorage.getItem("user");
+        initialUser = storedUser ? JSON.parse(storedUser) : null;
+    }
 
     return {
         user: initialUser,
@@ -11,9 +14,13 @@ const useAuthStore = create((set) => {
         login: async (userData) => {
             try {
                 set({ isLoading: true });
+                if (typeof window !== 'undefined') {
 
-                localStorage.setItem("user", JSON.stringify(userData));
-                set({ user: userData, isLoading: false });
+                    localStorage.setItem("user", JSON.stringify(userData));
+                    set({ user: userData, isLoading: false });
+
+                }
+
             } catch (error) {
                 console.error("Login failed:", error);
                 set({ isLoading: false });
